@@ -1,0 +1,15 @@
+'use strict'
+
+function hashTabs(links, tabs) {
+  function setPage(page) {
+    location.hash = page
+    $(tabs).not('.' + page).fadeTo(300,0).hide()
+    $(tabs + '.' + page).delay(306).show().fadeTo(300,1)
+  }
+
+  $(tabs).fadeTo(0,0).hide()
+  $(links).click(function() {
+    setPage($(this).attr('class'))
+  })
+  setPage(location.hash.replace('#','') || $(tabs).first().attr('class'))
+}
